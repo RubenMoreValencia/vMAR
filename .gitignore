@@ -1,0 +1,6 @@
+# Out-of-tree CMake/CLion build artifacts and local installation prefixes
+build/
+build-*/
+cmake-build-*/
+vmar-install/
+.DS_Store

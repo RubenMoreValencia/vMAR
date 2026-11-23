@@ -1,0 +1,9 @@
+id,integrator,field,dimension,time,step,n_steps,lambda,equilibrium,forcing,state1,state2,expected1,expected2
+ode_decay_h020_euler,euler,relaxation,1,0,0.2,5,1,0,0,1,0,0.32768000000000,0
+ode_decay_h020_rk4,rk4,relaxation,1,0,0.2,5,1,0,0,1,0,0.36788523812530,0
+ode_decay_h010_euler,euler,relaxation,1,0,0.1,10,1,0,0,1,0,0.34867844010000,0
+ode_decay_h010_rk4,rk4,relaxation,1,0,0.1,10,1,0,0,1,0,0.36787977441250,0
+ode_decay_h005_euler,euler,relaxation,1,0,0.05,20,1,0,0,1,0,0.35848592240854,0
+ode_decay_h005_rk4,rk4,relaxation,1,0,0.05,20,1,0,0,1,0,0.36787946114754,0
+ode_decay_h0025_euler,euler,relaxation,1,0,0.025,40,1,0,0,1,0,0.36323243988788,0
+ode_decay_h0025_rk4,rk4,relaxation,1,0,0.025,40,1,0,0,1,0,0.36787944239418,0

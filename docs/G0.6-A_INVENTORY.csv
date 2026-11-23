@@ -1,0 +1,15 @@
+family,r_source,c_source,mathematics,contract,equivalence,decision,module,acceptance_test
+Differential state,vMAR.Core/R/integrators.R,vMAR/src/vmar_core.c,"x'=f(t,x)",Finite dimensions and transactional step,R-C23 scalar and vector parity,CONSERVE,core,vmar_core_contracts;vmar_r_parity
+Euler and RK4,vMAR.Core/R/integrators.R,vMAR/src/vmar_core.c,Explicit ODE integration,Declared workspaces and field counts,R-C23 numerical parity,CONSERVE,core,vmar_core_contracts;vmar_r_parity
+Single neuron,vMAR.Core/R/natural_learning.R,vMAR/src/vmar_neuron.c,Analytic MSE gradient,Parameter dimensions and finite gradients,Original DSNeuralRNAS and R-C23 parity,CONSERVE,neuron,vmar_neuron_contracts;vmar_r_neuron_parity
+First-moment memory,vMAR.Core/R/memory.R,vMAR/src/vmar_memory.c,Exponential relaxation,Memory state and initialization,R-C23 memory parity,CONSERVE_PRIMITIVE,memory,vmar_memory_contracts;vmar_r_memory_parity
+Coupled gradient memory,vMAR.Core/R/adaptive_control.R,vMAR/src/vmar_adaptive_control.c,theta'=-eta(g+cm),Coupling explicit and opt-in,Transfer and intervention audits,EXPERIMENTAL,adaptive_control,vmar_adaptive_control_contracts;vmar_transfer_invariants
+Backtracking,vMAR.Core/R/control.R,vMAR/src/vmar_control.c,Acceptance of proposed state,Rollback and bounded attempts,R-C23 control parity,CONSERVE_MECHANISM,control,vmar_control_contracts;vmar_r_control_parity
+Activation catalogue,vMAR.Core/R/activations.R,vMAR/src/vmar_neuron.c,phi and dphi/dz,Finite values and boundary rules,R-C23 activation parity,CONSERVE,neuron,vmar_activation_contracts
+Custom activation,vMAR.Core/R/custom_activations.R,vMAR/src/vmar_custom_activation.c,phi(z;alpha) and Jacobian,Callbacks and trainable parameter dimension,R-C23 custom activation parity,CONSERVE,custom_activation,vmar_custom_activation_contracts
+Regime diagnostics,vMAR.Core/R/regime_diagnostics.R,vMAR/src/vmar_regime.c,Alignment and risk,Descriptive diagnostic distinct from policy,R-C23 regime parity,EXPERIMENTAL,regime,vmar_regime_contracts;vmar_r_regime_parity
+Adam comparator,vMAR/reference/run_R_adam_audit.R,vMAR/reference/adam_reference.c,Discrete bias-corrected moments,Zero-init and equal gradient budget,24 R-C23 cases reported,REFERENCE_ONLY,reference,vmar_adam_reference_contracts;vmar_r_adam_reference_parity
+Second moment,vMAR/reference/run_R_second_moment_audit.R,vMAR/reference/second_moment_reference.c,v'=(g^2-v)/tau2,Nonnegative observation without intervention,12 R-C23 cases reported,REFERENCE_ONLY,reference,vmar_second_moment_contracts;vmar_r_second_moment_parity
+Second moment control,vMAR/reference/run_R_second_moment_audit.R,vMAR/reference/second_moment_reference.c,Second-moment-conditioned coupling,Controlled paired counterfactual,12 of 12 worse,DO_NOT_PROMOTE,reference,vmar_r_second_moment_parity
+Multilayer neural learning,vMAR.Core/R/mlp.R,NOT_IMPLEMENTED_C,Multilayer forward-backward,Layer shape and gradient contracts,R reference only,PLAN_MIGRATION,mlp,NOT_YET_DEFINED
+FormalSpec and EQUDIF,EXTERNAL_PROJECTS,NOT_IMPLEMENTED_C,System-dynamics formal invariants,Version-specific contracts needed,Not verified for C,PLAN_AUDIT,formal_spec,NOT_YET_DEFINED

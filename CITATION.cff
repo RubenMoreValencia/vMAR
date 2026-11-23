@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use vMAR in research, cite the software version and exact source revision."
+title: "vMAR: Independent Differential Core for Observable Neural Learning"
+type: software
+authors:
+  - family-names: More Valencia
+    given-names: Rubén Alexander
+version: 0.1.16
+abstract: >-
+  Experimental C23 computational core for observable neural learning
+  dynamics, explicit memory, feedback control, and numerical references.
+keywords:
+  - neural learning dynamics
+  - dynamical systems
+  - C23
+  - DSNeuralRNAS

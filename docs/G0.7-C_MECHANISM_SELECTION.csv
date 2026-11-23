@@ -1,0 +1,10 @@
+id,mechanism,classification,default,math_semantics,admission_evidence,decision,scope_limit
+M0,baseline multilayer,stable,NO,theta-gradient flow with memory frozen,G0.7-B 50/50 parity and G0.7-B.2 time parity,KEEP,diagnostic reference
+M1,observational first memory,stable,YES,memory relaxation without theta coupling,G0.7-B.1 320/320 parity and M0/M1 loss equivalence,KEEP,does not improve loss by design
+M2,fixed memory coupling,experimental,NO,memory enters theta differential field,G0.7-B.2 small positive mean with mixed paired outcomes,OPT_IN,benefit not generalized
+M3,adaptive loss-gated controller,experimental,NO,coupled field plus backtracking and pre-step gate,G0.7-B.2 5.4x field calls with no extra mean benefit,OPT_IN,not default due computational cost
+EULER,first-order explicit integrator,reference,NO,integrates any declared field,G0.6 numerical and R-C23 parity,KEEP,separate from learning policy
+RK4,fourth-order explicit integrator,reference,NO,integrates the same declared field,G0.6 error and equal-budget audits,KEEP,separate from learning policy
+ADAM,discrete moment optimizer,reference,NO,independent discrete reference method,G0.5-E.5.4.3 parity,REFERENCE,not equated with continuous memory
+SECOND_MOMENT,second-moment memory,observational reference,NO,tracks squared gradients,G0.5-E.5.4.4 parity without demonstrated coupling gain,REFERENCE,no automatic core coupling
+FORMALSPEC,formal observability contracts,delegated reference,NO,trace and proof obligations,G0.6-C interoperability and trace parity,KEEP,does not reimplement Psi Gamma Phi
