@@ -1,5 +1,13 @@
 # Changelog — vMAR C23
 
+## Unreleased — G0.9-P.2 direct Python API
+
+- Introduced installable Python package `vmar-dynamics` (`import vmar`).
+- `Differential` delegates Euler/RK4 to compiled C23 source with a typed
+  state/trajectory API; no duplicated integrator in Python.
+- Validated an independently installed Linux wheel and four contracts.
+- Kept experimental scope separate from memory, control and neural bindings.
+
 Changes are documented for a research-stage implementation. This record
 does not retrospectively certify an official release.
 

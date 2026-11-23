@@ -1,5 +1,27 @@
 # vMAR — Núcleo computacional diferencial en C23
 
+## Uso directo desde Python (experimental)
+
+En Linux o macOS, con un compilador compatible con las características C23
+requeridas, puede instalarse desde GitHub:
+
+```sh
+python -m pip install "git+https://github.com/RubenMoreValencia/vMAR.git"
+```
+
+```python
+from vmar import Differential
+
+modelo = Differential(field=lambda t, y: (-y[0],), initial_state=[1.0])
+resultado = modelo.integrate(method="rk4", step=0.1, steps=10)
+print(resultado.state)  # aproximadamente (0.3678797744124984,)
+```
+
+El nombre del paquete distribuido es `vmar-dynamics`; la importación es
+`vmar`. La instalación compila el **núcleo C23 original**; no reproduce sus
+integradores en Python. Por ahora la API Python expone únicamente integración
+diferencial. Véase el [contrato G0.9-P.2](docs/G0.9-P2_PYTHON_API.md).
+
 **Estado:** versión de desarrollo `0.1.16-alpha`. Esta denominación expresa
 el estado preliminar; las macros públicas y CMake identifican la versión
 numérica `0.1.16`. [Technical README in English](README.md).

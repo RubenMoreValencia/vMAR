@@ -43,6 +43,20 @@ endif()
 
 add_library(vmar_core STATIC src/vmar_core.c src/vmar_state_layout.c src/vmar_neuron.c src/vmar_memory.c src/vmar_control.c src/vmar_custom_activation.c src/vmar_adaptive_control.c src/vmar_regime.c src/vmar_trace.c src/vmar_network.c src/vmar_network_system.c src/vmar_network_mechanism.c)
 add_library(vmar::core ALIAS vmar_core)
+option(VMAR_BUILD_PYTHON_FFI "Build optional shared C23 library for Python ctypes research" OFF)
+if(VMAR_BUILD_PYTHON_FFI)
+  # Reuse exactly the C23 source files of the installed static core.
+  # This experimental shared target is not installed or exported.
+  get_target_property(_vmar_ffi_sources vmar_core SOURCES)
+  add_library(vmar_ffi SHARED ${_vmar_ffi_sources})
+  target_include_directories(vmar_ffi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+  if(UNIX AND NOT APPLE)
+    target_link_libraries(vmar_ffi PRIVATE m)
+  endif()
+  if(CMAKE_C_COMPILER_ID MATCHES "Clang|GNU")
+    target_compile_options(vmar_ffi PRIVATE -Wall -Wextra -Wpedantic)
+  endif()
+endif()
 target_include_directories(vmar_core PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)

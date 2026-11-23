@@ -1,5 +1,27 @@
 # vMAR — Independent differential core (C23)
 
+## Direct Python access (experimental)
+
+Python users can install the source distribution on Linux or macOS with a
+working C23-capable compiler and Python build tools:
+
+```sh
+python -m pip install "git+https://github.com/RubenMoreValencia/vMAR.git"
+```
+
+```python
+from vmar import Differential
+
+model = Differential(field=lambda t, y: (-y[0],), initial_state=[1.0])
+trajectory = model.integrate(method="rk4", step=0.1, steps=10)
+print(trajectory.state)  # approximately (0.3678797744124984,)
+```
+
+The pip distribution is `vmar-dynamics`; `vmar` is its Python import name.
+Installation compiles and links the **original C23 sources**; Python adds no
+independent Euler/RK4 algorithm. This experimental API currently exposes
+differential integration only. See [G0.9-P.2 Python API](docs/G0.9-P2_PYTHON_API.md).
+
 **Languages:** English (canonical technical documentation) · [Español](README.es.md).
 
 **Research release documentation:** [public API](docs/PUBLIC_API.md) ·
