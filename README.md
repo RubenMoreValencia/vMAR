@@ -1,6 +1,48 @@
 # vMAR — Independent differential core (C23)
 
+**Distribution review (2026-11-27):** source package for C23 applications and
+native Python consumers. The maintainer must review the final source changes
+before updating GitHub; this archive is not itself an official GitHub release.
+
+**Start here:** [Installation in macOS/Linux and Colab](docs/INSTALLATION_EN.md) ·
+[Public API inventory](docs/PUBLIC_DISTRIBUTION_INVENTORY.md) ·
+[Evidence and release checklist](docs/PUBLICATION_EVIDENCE.md) ·
+[Spanish introduction](README.es.md).
+
+Python's published distribution name is `vmar-dynamics` (`import vmar`),
+version `0.1.16a2` in this candidate. The CMake C23 project version is
+`0.1.16`. These identifiers intentionally describe the same C23 baseline at
+different packaging stages; they are not independent mathematical engines.
+
+> **G0.9-P.3 interoperability candidate:** The native library's installed
+> `vmar/*.h` contracts and `vmar::core` CMake target are the language-neutral
+> interface for *any* C23-compatible consumer. The new `vmar.interop`
+> Python layer exposes validated neural-network, memory, feedback,
+> M0/M1/M2/M3 and tracing families, in addition to Euler/RK4. The underlying
+> C23 numerical implementations remain unchanged. See
+> [public coverage matrix](docs/PYTHON_INTEROP_MATRIX.md),
+> [Colab bridge recovery](docs/COLAB_BRIDGE_RECOVERY.md), and
+> [release gates](docs/PYTHON_INTEROP_RELEASE_REVIEW.md).
+
+```python
+from vmar import Network, NetworkMechanism, memory_ema
+
+network = Network((2, 4, 1))
+print(network.predict([[1., 0.]]))
+print(memory_ema((0., 0.), (1., 2.), .8))
+process = NetworkMechanism(network, [[1., 0.]], [1.], mode="observe")
+print(process.step(method="rk4"))
+```
+
+Run `python examples/python_public_consumer.py` after installing the package.
+The specialized experimental C23 interfaces (custom activation, adaptive
+regimes and C01) are **not** all promoted to Python in this candidate.
+
 ## Direct Python access (experimental)
+
+Until the updated source is uploaded to GitHub, install from this **local
+folder** with `python3 -m pip install ./vMAR` (from its parent directory).
+Do not use the Git URL below to validate this candidate before publication.
 
 Python users can install the source distribution on Linux or macOS with a
 working C23-capable compiler and Python build tools:
@@ -19,8 +61,10 @@ print(trajectory.state)  # approximately (0.3678797744124984,)
 
 The pip distribution is `vmar-dynamics`; `vmar` is its Python import name.
 Installation compiles and links the **original C23 sources**; Python adds no
-independent Euler/RK4 algorithm. This experimental API currently exposes
-differential integration only. See [G0.9-P.2 Python API](docs/G0.9-P2_PYTHON_API.md).
+independent Euler/RK4 algorithm. The original integration-only interface
+is documented in [G0.9-P.2 Python API](docs/G0.9-P2_PYTHON_API.md); the
+additional approved families are described in
+[G0.9-P.3 interoperability](docs/PYTHON_INTEROP_MATRIX.md).
 
 **Languages:** English (canonical technical documentation) · [Español](README.es.md).
 

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vmar-dynamics"
-version = "0.1.16a1"
-description = "Python interface to the vMAR C23 differential core"
+version = "0.1.16a2"
+description = "Python interoperability for validated public vMAR C23 numerical families"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"

@@ -1,5 +1,18 @@
 # Changelog — vMAR C23
 
+## Unreleased — G0.9-P.3 Python interoperability distribution candidate
+
+- Exposed approved native C23 families to Python: activations, memory,
+  scalar-output networks, Euler/RK4 learning fields, control, M0–M3,
+  state layout and confirmed tracing.
+- Added independent Python tests and an end-to-end consumer example.
+- Added bilingual installation guides and explicit coverage/limits.
+- Researcher-reported macOS and Google Colab wheel installation succeeded;
+  the Colab Python test subprocess exited successfully (`returncode=0`).
+- Kept experimental custom activation, regime, adaptive-control and C01
+  interfaces outside the expanded Python promise.
+
+
 ## Unreleased — G0.9-P.2 direct Python API
 
 - Introduced installable Python package `vmar-dynamics` (`import vmar`).
